@@ -1,5 +1,5 @@
 Name:		subscription-manager-multifake
-Version:	0.1
+Version:	0.2
 Release:	1%{?dist}
 Summary:	Use subscription-manager to register multiple (fake) systems
 
@@ -23,15 +23,18 @@ Requires:	subscription-manager-migration-data
 
 %install
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
-cp %{NAME}.py $RPM_BUILD_ROOT%{python_sitelib}/
-cp stageportal $RPM_BUILD_ROOT%{_bindir}
+cp %{name}.py $RPM_BUILD_ROOT%{_bindir}/%{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
 %doc COPYING
-%attr(0755, root, root) %{_bindir}/stageportal
+%attr(0755, root, root) %{_bindir}/%{name}
 
 %changelog
+* Mon Sep 09 2013 Vitaly Kuznetsov <vitty@redhat.com> 0.2-1
+- new package built with tito
+
 
