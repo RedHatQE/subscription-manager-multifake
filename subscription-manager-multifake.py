@@ -61,9 +61,18 @@ def action_productadd(certfile, sysname=None):
         path = WORKDIR + '/' + sysname + '/product'
     return subprocess.check_call(['cp', certfile, path])
 
+def action_setfacts(factsfile, sysname=None):
+    if sysname is None:
+        c = ConfigParser.ConfigParser()
+        c.readfp(open(RHSMCONF))
+        path = c.get('rhsm', 'currentMultifakeSystem')
+    else:
+        path = WORKDIR + '/' + sysname
+    return subprocess.check_call(['cp', factsfile, path + '/facts.json'])
+
 if __name__ == '__main__':
 
-    ALL_ACTIONS = ['currentsystem', 'newsystem', 'choose', 'productadd']
+    ALL_ACTIONS = ['currentsystem', 'newsystem', 'choose', 'productadd', 'setfacts']
 
     argparser = argparse.ArgumentParser(description='Subscripiton manager multifake', epilog='vkuznets@redhat.com')
 
@@ -79,6 +88,10 @@ if __name__ == '__main__':
         argparser.add_argument('--name', help='System name (defaults to current)')
         argparser.add_argument('--certfile', required=True, help='Product cert file')
 
+    if args.action == 'setfacts':
+        argparser.add_argument('--name', help='System name (defaults to current)')
+        argparser.add_argument('--factsfile', required=True, help='JSON with facts')
+
     [args, ignored_args] = argparser.parse_known_args()
 
     retval = 0
@@ -91,5 +104,7 @@ if __name__ == '__main__':
         retval = action_choose(args.name)
     elif args.action == 'productadd':
         retval = action_productadd(args.certfile, args.name)
+    elif args.action == 'setfacts':
+        retval = action_setfacts(args.factsfile, args.name)
 
     sys.exit(retval)
