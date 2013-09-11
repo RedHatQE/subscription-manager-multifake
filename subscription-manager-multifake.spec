@@ -22,7 +22,9 @@ BuildRequires:	python-devel
 
 %install
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
-cp %{name}.py $RPM_BUILD_ROOT%{_bindir}/%{name}
+mkdir -p $RPM_BUILD_ROOT%{python_sitelib}/
+cp %{name} $RPM_BUILD_ROOT%{_bindir}/%{name}
+cp %{name}.py $RPM_BUILD_ROOT%{python_sitelib}/subscription_manager_multifake.py
 mkdir -p $RPM_BUILD_ROOT%{_sharedstatedir}/%{name}
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/rhsm/pluginconf.d/
 mkdir -p $RPM_BUILD_ROOT%{_datarootdir}/rhsm-plugins/
@@ -37,6 +39,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING README.md
 %{_sysconfdir}/rhsm/pluginconf.d/*.conf
 %attr(0755, root, root) %{_bindir}/%{name}
+%{python_sitelib}/*.py*
 %dir %{_sharedstatedir}/%{name}
 %{_datarootdir}/rhsm-plugins/*
 
