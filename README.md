@@ -30,6 +30,10 @@ Usage example
     # Choosing 'fake' system:
     $ subscription-manager-multifake --action choose --name testsys2
 
+    # Registering bunch of 'fake' systems based on csv file (there is an example in examples/). Current settings in /etc/rhsm/rhsm.conf are used.
+    $ python subscription-manager-multifake.py --action createsystems --username testuser --password testpassword --csvfile test-syscreate.csv
+    ...
+
 Contact
 -------
 vkuznets at redhat.com

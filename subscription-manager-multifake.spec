@@ -30,6 +30,8 @@ mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/rhsm/pluginconf.d/
 mkdir -p $RPM_BUILD_ROOT%{_datarootdir}/rhsm-plugins/
 cp rhsm-plugins/*.conf $RPM_BUILD_ROOT%{_sysconfdir}/rhsm/pluginconf.d/
 cp rhsm-plugins/*.py $RPM_BUILD_ROOT%{_datarootdir}/rhsm-plugins/
+mkdir -p $RPM_BUILD_ROOT%{_datarootdir}/%{name}
+cp -r examples $RPM_BUILD_ROOT%{_datarootdir}/%{name}/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -42,6 +44,7 @@ rm -rf $RPM_BUILD_ROOT
 %{python_sitelib}/*.py*
 %dir %{_sharedstatedir}/%{name}
 %{_datarootdir}/rhsm-plugins/*
+%{_datarootdir}/%{name}/examples
 
 %changelog
 * Mon Sep 09 2013 Vitaly Kuznetsov <vitty@redhat.com> 0.2-1

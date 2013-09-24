@@ -1,0 +1,4 @@
+Name,Count,Org Label,Environment Label,Groups,Virtual,Host,OS,Arch,Sockets,RAM,Cores,SLA,Product Files,Subscriptions
+two%d,2,Entertain,Library,,No,,6.4,x86_64,2,8,12,Standard,/usr/share/rhsm/product/RHEL-6/Server-Server-x86_64-23d36f276d57-69.pem,"RH0101594RN|Red Hat Enterprise Linux Server, Standard (1-2 sockets) (Up to 1 guest)"
+three%d,1,Entertain,Library,,No,,6.3,x86_64,,4,4,Standard,/usr/share/rhsm/product/RHEL-6/Server-Server-x86_64-23d36f276d57-69.pem,"RH0101594RN|Red Hat Enterprise Linux Server, Standard (1-2 sockets) (Up to 1 guest)"
+testsys.vm%d,1,Entertain,Library,,Yes,two1,6.3,x86_64,1,4,4,Standard,/usr/share/rhsm/product/RHEL-6/Server-Server-x86_64-23d36f276d57-69.pem,"RH0958488RN|Red Hat Enterprise Linux Workstation, Standard"
